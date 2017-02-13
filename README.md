@@ -1,9 +1,11 @@
 Minimal tutorials for [PyTorch](https://github.com/pytorch/pytorch) adapted
 from Alec Radford's [Theano tutorials](https://github.com/Newmu/Theano-Tutorials).
 
-0. [Tensor multiplication](0_multiply.py)
-1. [Linear Regression](1_linear_regression.py)
-2. [Logistic Regression](2_logistic_regression.py)
-3. [Neural Network](3_neural_net.py)
-4. [Modern Neural Network](4_modern_neural_net.py)
-5. [Convolutional Neural Network](5_convolutional_net.py)
+<ol start="0">
+  <li><a href="0_multiply.py">Tensor multiplication</a></li>
+  <li><a href="1_linear_regression.py">Linear Regression</a></li>
+  <li><a href="2_logistic_regression.py">Logistic Regression</a></li>
+  <li><a href="3_neural_net.py">Neural Network</a></li>
+  <li><a href="4_modern_neural_net.py">Modern Neural Network</a></li>
+  <li><a href="5_convolutional_net.py">Convolutional Neural Network</a></li>
+</ol>

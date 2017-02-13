@@ -35,9 +35,9 @@ class ConvNet(torch.nn.Module):
         return self.fc.forward(x)
 
 
-def train(model, loss, optimizer, x, y):
-    x = Variable(x, requires_grad=False)
-    y = Variable(y, requires_grad=False)
+def train(model, loss, optimizer, x_val, y_val):
+    x = Variable(x_val, requires_grad=False)
+    y = Variable(y_val, requires_grad=False)
 
     # Reset gradient
     optimizer.zero_grad()
@@ -55,9 +55,9 @@ def train(model, loss, optimizer, x, y):
     return output.data[0]
 
 
-def predict(model, x):
-    var_x = Variable(x, requires_grad=False)
-    output = model.forward(var_x)
+def predict(model, x_val):
+    x = Variable(x_val, requires_grad=False)
+    output = model.forward(x)
     return output.data.numpy().argmax(axis=1)
 
 
@@ -75,7 +75,7 @@ def main():
     n_classes = 10
     model = ConvNet(output_dim=n_classes)
     loss = torch.nn.CrossEntropyLoss(size_average=True)
-    optimizer = optim.RMSprop(model.parameters(), lr=0.001)
+    optimizer = optim.SGD(model.parameters())
     batch_size = 100
 
     for i in range(100):

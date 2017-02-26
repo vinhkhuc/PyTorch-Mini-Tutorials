@@ -7,7 +7,7 @@ from torch import optim
 from data_util import load_mnist
 
 
-# Separately create two sequential here since PyTorch doesn't have nn.View()
+# We need to create two sequential models here since PyTorch doesn't have nn.View()
 class ConvNet(torch.nn.Module):
     def __init__(self, output_dim):
         super(ConvNet, self).__init__()
@@ -26,8 +26,6 @@ class ConvNet(torch.nn.Module):
         self.fc.add_module("relu_3", torch.nn.ReLU())
         self.fc.add_module("dropout_3", torch.nn.Dropout())
         self.fc.add_module("fc2", torch.nn.Linear(50, output_dim))
-        self.fc.add_module("relu_4", torch.nn.ReLU())
-        self.fc.add_module("softmax", torch.nn.Softmax())
 
     def forward(self, x):
         x = self.conv.forward(x)
@@ -75,7 +73,7 @@ def main():
     n_classes = 10
     model = ConvNet(output_dim=n_classes)
     loss = torch.nn.CrossEntropyLoss(size_average=True)
-    optimizer = optim.SGD(model.parameters())
+    optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
     batch_size = 100
 
     for i in range(100):

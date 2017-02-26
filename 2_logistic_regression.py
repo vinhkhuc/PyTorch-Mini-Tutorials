@@ -8,9 +8,9 @@ from data_util import load_mnist
 
 
 def build_model(input_dim, output_dim):
+    # We don't need the softmax layer here since CrossEntropyLoss already uses it internally.
     model = torch.nn.Sequential()
     model.add_module("linear", torch.nn.Linear(input_dim, output_dim, bias=False))
-    model.add_module("softmax", torch.nn.Softmax())
     return model
 
 

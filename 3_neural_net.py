@@ -12,7 +12,6 @@ def build_model(input_dim, output_dim):
     model.add_module("linear_1", torch.nn.Linear(input_dim, 512, bias=False))
     model.add_module("sigmoid_1", torch.nn.Sigmoid())
     model.add_module("linear_2", torch.nn.Linear(512, output_dim, bias=False))
-    model.add_module("softmax", torch.nn.Softmax())
     return model
 
 

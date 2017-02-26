@@ -16,7 +16,6 @@ def build_model(input_dim, output_dim):
     model.add_module("relu_2", torch.nn.ReLU())
     model.add_module("dropout_2", torch.nn.Dropout(0.2))
     model.add_module("linear_3", torch.nn.Linear(512, output_dim, bias=False))
-    model.add_module("softmax", torch.nn.Softmax())
     return model
 
 

@@ -47,7 +47,7 @@ def main():
             cost += train(model, loss, optimizer, X[start:end], Y[start:end])
         print("Epoch = %d, cost = %s" % (i + 1, cost / num_batches))
 
-    w = model.parameters().next().data  # model has only one parameter
+    w = next(model.parameters()).data  # model has only one parameter
     print("w = %.2f" % w.numpy())  # will be approximately 2
 
 if __name__ == "__main__":

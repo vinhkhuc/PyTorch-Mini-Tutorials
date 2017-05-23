@@ -76,7 +76,7 @@ def main():
     optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
     batch_size = 100
 
-    for i in range(100):
+    for i in range(20):
         cost = 0.
         num_batches = n_examples / batch_size
         for k in range(num_batches):

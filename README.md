@@ -8,4 +8,5 @@ from Alec Radford's [Theano tutorials](https://github.com/Newmu/Theano-Tutorials
   <li><a href="3_neural_net.py">Neural Network</a></li>
   <li><a href="4_modern_neural_net.py">Modern Neural Network</a></li>
   <li><a href="5_convolutional_net.py">Convolutional Neural Network</a></li>
+  <li><a href="6_lstm.py">Long Short-Term Memory</a></li>
 </ol>

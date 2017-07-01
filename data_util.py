@@ -2,9 +2,14 @@ import gzip
 import os
 from os import path
 import urllib
+import urllib.request as request
 import numpy as np
+import sys
 
 DATASET_DIR = 'datasets/'
+
+MNIST_FILES = ["train-images-idx3-ubyte.gz", "train-labels-idx1-ubyte.gz",
+               "t10k-images-idx3-ubyte.gz", "t10k-labels-idx1-ubyte.gz"]
 
 
 def download_file(url, local_path):
@@ -14,13 +19,17 @@ def download_file(url, local_path):
         os.makedirs(dir_path)
 
     print("Downloading from '%s' ..." % url)
-    urllib.URLopener().retrieve(url, local_path)
+    if sys.version_info.major < 3:
+        urllib.URLopener().retrieve(url, local_path)
+    else:
+        print(url)
+        print(local_path)
+        request.urlretrieve(url, local_path)
 
 
 def download_mnist(local_path):
     url_root = "http://yann.lecun.com/exdb/mnist/"
-    for f_name in ["train-images-idx3-ubyte.gz", "train-labels-idx1-ubyte.gz",
-                   "t10k-images-idx3-ubyte.gz", "t10k-labels-idx1-ubyte.gz"]:
+    for f_name in MNIST_FILES:
         f_path = os.path.join(local_path, f_name)
         if not path.exists(f_path):
             download_file(url_root + f_name, f_path)
@@ -39,6 +48,11 @@ def load_mnist(ntrain=60000, ntest=10000, onehot=True):
     data_dir = os.path.join(DATASET_DIR, 'mnist/')
     if not path.exists(data_dir):
         download_mnist(data_dir)
+    else:
+        # check all files
+        checks = [path.exists(os.path.join(data_dir, f)) for f in MNIST_FILES]
+        if not np.all(checks):
+            download_mnist(data_dir)
 
     with gzip.open(os.path.join(data_dir, 'train-images-idx3-ubyte.gz')) as fd:
         buf = fd.read()

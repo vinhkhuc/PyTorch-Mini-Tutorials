@@ -8,9 +8,11 @@ from data_util import load_mnist
 
 
 def build_model(input_dim, output_dim):
-    # We don't need the softmax layer here since CrossEntropyLoss already uses it internally.
+    # We don't need the softmax layer here since CrossEntropyLoss already
+    # uses it internally.
     model = torch.nn.Sequential()
-    model.add_module("linear", torch.nn.Linear(input_dim, output_dim, bias=False))
+    model.add_module("linear",
+                     torch.nn.Linear(input_dim, output_dim, bias=False))
     return model
 
 
@@ -56,10 +58,11 @@ def main():
 
     for i in range(100):
         cost = 0.
-        num_batches = n_examples / batch_size
+        num_batches = n_examples // batch_size
         for k in range(num_batches):
             start, end = k * batch_size, (k + 1) * batch_size
-            cost += train(model, loss, optimizer, trX[start:end], trY[start:end])
+            cost += train(model, loss, optimizer,
+                          trX[start:end], trY[start:end])
         predY = predict(model, teX)
         print("Epoch %d, cost = %f, acc = %.2f%%"
               % (i + 1, cost / num_batches, 100. * np.mean(predY == teY)))

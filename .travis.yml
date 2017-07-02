@@ -1,0 +1,12 @@
+language: python
+python:
+  - "2.7"
+  - "3.6"
+script:
+  - python 0_multiply.py
+  - 1_linear_regression.py
+  - 2_logistic_regression.py
+  - 3_neural_net.py
+  - 4_modern_neural_net.py
+  - 5_convolutional_net.py
+  - 6_lstm.py

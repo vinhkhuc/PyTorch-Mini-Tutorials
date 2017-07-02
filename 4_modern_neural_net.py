@@ -61,7 +61,7 @@ def main():
 
     for i in range(100):
         cost = 0.
-        num_batches = n_examples / batch_size
+        num_batches = n_examples // batch_size
         for k in range(num_batches):
             start, end = k * batch_size, (k + 1) * batch_size
             cost += train(model, loss, optimizer, trX[start:end], trY[start:end])

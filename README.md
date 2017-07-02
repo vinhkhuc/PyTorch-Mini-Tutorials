@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/vinhkhuc/PyTorch-Mini-Tutorials.svg?branch=master)](https://travis-ci.org/vinhkhuc/PyTorch-Mini-Tutorials)
+<!-- [![Build Status](https://travis-ci.org/vinhkhuc/PyTorch-Mini-Tutorials.svg?branch=master)](https://travis-ci.org/vinhkhuc/PyTorch-Mini-Tutorials) -->
 
 Minimal tutorials for [PyTorch](https://github.com/pytorch/pytorch) adapted
 from Alec Radford's [Theano tutorials](https://github.com/Newmu/Theano-Tutorials).

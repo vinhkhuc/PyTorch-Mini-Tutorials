@@ -14,10 +14,10 @@ install:
   - pip install -q torchvision
   - pip install -q numpy==1.13.0
 script:
-  - python 0_multiply.py
-  - python 1_linear_regression.py
-  - python 2_logistic_regression.py
-  - python 3_neural_net.py
-  - python 4_modern_neural_net.py
-  - python 5_convolutional_net.py
-  - python 6_lstm.py
+  - timeout 120 python 0_multiply.py
+  - timeout 120 python 1_linear_regression.py
+  - timeout 120 python 2_logistic_regression.py
+  - timeout 120 python 3_neural_net.py
+  - timeout 120 python 4_modern_neural_net.py
+  - timeout 120 python 5_convolutional_net.py
+  - timeout 120 python 6_lstm.py

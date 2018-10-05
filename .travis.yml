@@ -6,18 +6,12 @@ python:
   - 3.6
 cache: bundler
 install:
-  - if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
-      pip install -q http://download.pytorch.org/whl/cu75/torch-0.1.12.post2-cp27-none-linux_x86_64.whl;
-    else
-      pip install -q http://download.pytorch.org/whl/cu75/torch-0.1.12.post2-cp36-cp36m-linux_x86_64.whl;
-    fi
-  - pip install -q torchvision
-  - pip install -q numpy==1.13.0
+  - pip install --no-cache-dir -q torch
 script:
-  - timeout --preserve-status 1m python 0_multiply.py
-  - timeout --preserve-status 2m python 1_linear_regression.py
+  - timeout --preserve-status 5m python 0_multiply.py
+  - timeout --preserve-status 5m python 1_linear_regression.py
   - timeout --preserve-status 5m python 2_logistic_regression.py
   - timeout --preserve-status 5m python 3_neural_net.py
   - timeout --preserve-status 5m python 4_modern_neural_net.py
-  - timeout --preserve-status 5m python 5_convolutional_net.py
-  - timeout --preserve-status 5m python 6_lstm.py
+  - timeout --preserve-status 10m python 5_convolutional_net.py
+  - timeout --preserve-status 10m python 6_lstm.py

@@ -40,7 +40,7 @@ def train(model, loss, optimizer, x_val, y_val):
     # Update parameters
     optimizer.step()
 
-    return output.data[0]
+    return output.item()
 
 
 def predict(model, x_val):

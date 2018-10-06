@@ -51,7 +51,7 @@ def main():
     n_examples, n_features = trX.size()
     n_classes = 10
     model = build_model(n_features, n_classes)
-    loss = torch.nn.CrossEntropyLoss(size_average=True)
+    loss = torch.nn.CrossEntropyLoss(reduction='elementwise_mean')
     optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
     batch_size = 100
 

@@ -73,7 +73,7 @@ def main():
     trY = torch.from_numpy(trY).long()
 
     model = LSTMNet(input_dim, hidden_dim, n_classes)
-    loss = torch.nn.CrossEntropyLoss(size_average=True)
+    loss = torch.nn.CrossEntropyLoss(reduction='elementwise_mean')
     optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
 
     for i in range(epochs):

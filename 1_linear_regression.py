@@ -17,7 +17,7 @@ def train(model, loss, optimizer, x, y):
     optimizer.zero_grad()
 
     # Forward
-    fx = model.forward(x.view(len(x), 1))
+    fx = model.forward(x.view(len(x), 1)).squeeze()
     output = loss.forward(fx, y)
 
     # Backward
@@ -26,7 +26,7 @@ def train(model, loss, optimizer, x, y):
     # Update parameters
     optimizer.step()
 
-    return output.data[0]
+    return output.item()
 
 
 def main():
@@ -35,7 +35,7 @@ def main():
     Y = 2 * X + torch.randn(X.size()) * 0.33
 
     model = build_model()
-    loss = torch.nn.MSELoss(size_average=True)
+    loss = torch.nn.MSELoss(reduction='elementwise_mean')
     optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
     batch_size = 10
 

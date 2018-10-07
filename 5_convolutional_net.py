@@ -50,7 +50,7 @@ def train(model, loss, optimizer, x_val, y_val):
     # Update parameters
     optimizer.step()
 
-    return output.data[0]
+    return output.item()
 
 
 def predict(model, x_val):
@@ -72,7 +72,7 @@ def main():
     n_examples = len(trX)
     n_classes = 10
     model = ConvNet(output_dim=n_classes)
-    loss = torch.nn.CrossEntropyLoss(size_average=True)
+    loss = torch.nn.CrossEntropyLoss(reduction='elementwise_mean')
     optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
     batch_size = 100
 

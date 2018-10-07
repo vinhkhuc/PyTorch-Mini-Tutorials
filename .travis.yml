@@ -11,10 +11,10 @@ install:
 # We use timeout to prevent the Python process from running too long since the long running process will be
 # auto-killed by Travis. When the timeout happens, we override its exit code 143 by the success exit code 0.
 script:
-  - timeout --preserve-status 2m python 0_multiply.py            || if [ $? -eq 0 ] || [ $? -eq 143 ]; then exit 0; fi
-  - timeout --preserve-status 2m python 1_linear_regression.py   || if [ $? -eq 0 ] || [ $? -eq 143 ]; then exit 0; fi
-  - timeout --preserve-status 5m python 2_logistic_regression.py || if [ $? -eq 0 ] || [ $? -eq 143 ]; then exit 0; fi
-  - timeout --preserve-status 5m python 3_neural_net.py          || if [ $? -eq 0 ] || [ $? -eq 143 ]; then exit 0; fi
-  - timeout --preserve-status 5m python 4_modern_neural_net.py   || if [ $? -eq 0 ] || [ $? -eq 143 ]; then exit 0; fi
-  - timeout --preserve-status 10m python 5_convolutional_net.py  || if [ $? -eq 0 ] || [ $? -eq 143 ]; then exit 0; fi
-  - timeout --preserve-status 10m python 6_lstm.py               || if [ $? -eq 0 ] || [ $? -eq 143 ]; then exit 0; fi
+  - timeout 2m python 0_multiply.py            || if [ $? -eq 0 ] || [ $? -eq 143 ]; then exit 0; fi
+  - timeout 2m python 1_linear_regression.py   || if [ $? -eq 0 ] || [ $? -eq 143 ]; then exit 0; fi
+  - timeout 5m python 2_logistic_regression.py || if [ $? -eq 0 ] || [ $? -eq 143 ]; then exit 0; fi
+  - timeout 5m python 3_neural_net.py          || if [ $? -eq 0 ] || [ $? -eq 143 ]; then exit 0; fi
+  - timeout 5m python 4_modern_neural_net.py   || if [ $? -eq 0 ] || [ $? -eq 143 ]; then exit 0; fi
+  - timeout 10m python 5_convolutional_net.py  || if [ $? -eq 0 ] || [ $? -eq 143 ]; then exit 0; fi
+  - timeout 10m python 6_lstm.py               || if [ $? -eq 0 ] || [ $? -eq 143 ]; then exit 0; fi

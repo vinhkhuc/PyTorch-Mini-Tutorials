@@ -1,4 +1,3 @@
-from __future__ import division
 import numpy as np
 
 import torch
@@ -24,6 +23,7 @@ class LSTMNet(torch.nn.Module):
 
 
 def train(model, loss, optimizer, x_val, y_val):
+    model.train()
     x = Variable(x_val, requires_grad=False)
     y = Variable(y_val, requires_grad=False)
 
@@ -44,6 +44,7 @@ def train(model, loss, optimizer, x_val, y_val):
 
 
 def predict(model, x_val):
+    model.eval()
     x = Variable(x_val, requires_grad=False)
     output = model.forward(x)
     return output.data.numpy().argmax(axis=1)

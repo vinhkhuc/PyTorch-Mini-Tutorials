@@ -2,7 +2,6 @@ os:
   - linux
 language: python
 python:
-  - 2.7
   - 3.6
 cache: bundler
 install:

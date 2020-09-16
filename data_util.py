@@ -1,14 +1,9 @@
 import gzip
 import os
+import urllib.request as request
 from os import path
+
 import numpy as np
-
-import sys
-if sys.version_info.major < 3:
-    import urllib
-else:
-    import urllib.request as request
-
 
 DATASET_DIR = 'datasets/'
 
@@ -23,10 +18,7 @@ def download_file(url, local_path):
         os.makedirs(dir_path)
 
     print("Downloading from '%s' ..." % url)
-    if sys.version_info.major < 3:
-        urllib.URLopener().retrieve(url, local_path)
-    else:
-        request.urlretrieve(url, local_path)
+    request.urlretrieve(url, local_path)
 
 
 def download_mnist(local_path):

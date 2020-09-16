@@ -10,6 +10,7 @@ def build_model():
 
 
 def train(model, loss, optimizer, x, y):
+    model.train()
     x = Variable(x, requires_grad=False)
     y = Variable(y, requires_grad=False)
 
